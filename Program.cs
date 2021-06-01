@@ -40,12 +40,25 @@ namespace Heist
                 Console.WriteLine("How about an actual number?");
 
             }
+            int DifficultyInt;
+            while (true)
+            {
+                Console.Write("How difficult would you like this heist to be? (0-100) ");
+                string DifficultyString = Console.ReadLine();
+                if (int.TryParse(DifficultyString, out DifficultyInt) && DifficultyInt > 0 && DifficultyInt < 100)
+                {
+                    break;
+                }
+                Console.WriteLine("How about a reasonable number?");
+            }
 
+            int Wins = 0;
+            int Losses = 0;
 
             for (int j = 0; j < runs; j++)
             {
 
-                int Difficulty = 100;
+                int Difficulty = DifficultyInt;
                 int TeamSkillz = 0;
 
                 Random i = new Random();
@@ -67,15 +80,19 @@ namespace Heist
 
                 if (Difficulty < TeamSkillz)
                 {
+                    Wins++;
                     Console.WriteLine("You da best! You got all the monies");
                     Console.WriteLine("");
                 }
                 else
                 {
+                    Losses++;
                     Console.WriteLine("Do not pass go. Do not collect $200. Go directly to jail!");
                     Console.WriteLine("");
                 }
+
             }
+            Console.WriteLine($"Your team was successfull {Wins} times & failed miserably {Losses} times.");
         }
     }
 }
