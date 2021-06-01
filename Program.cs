@@ -28,9 +28,21 @@ namespace Heist
 
       Console.WriteLine($"You have {HeistTeam.Count} members on your team");
 
+      int Difficulty = 100;
+      int TeamSkillz = 0;
+
       foreach (TeamMember Person in HeistTeam)
       {
-        Console.WriteLine($"{Person.Name}'s skill level is {Person.SkillLevel} and their courage level is {Person.Courage}!");
+        // Console.WriteLine($"{Person.Name}'s skill level is {Person.SkillLevel} and their courage level is {Person.Courage}!");
+        TeamSkillz += Person.SkillLevel;
+      }
+      if (Difficulty < TeamSkillz)
+      {
+        Console.WriteLine("You da best! You got all the monies");
+      }
+      else
+      {
+        Console.WriteLine("Do not pass go. Do not collect $200. Go directly to jail!");
       }
     }
   }
