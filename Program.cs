@@ -31,11 +31,23 @@ namespace Heist
       int Difficulty = 100;
       int TeamSkillz = 0;
 
+      Random i = new Random();
+      int luck = i.Next(-10,10);
+      Difficulty = Difficulty + luck;
+
+      Console.Write($"Bank difficulty is{Difficulty}");
+
+
+
       foreach (TeamMember Person in HeistTeam)
       {
         // Console.WriteLine($"{Person.Name}'s skill level is {Person.SkillLevel} and their courage level is {Person.Courage}!");
         TeamSkillz += Person.SkillLevel;
       }
+
+      Console.WriteLine($"Team Skillz{TeamSkillz}");
+
+
       if (Difficulty < TeamSkillz)
       {
         Console.WriteLine("You da best! You got all the monies");
